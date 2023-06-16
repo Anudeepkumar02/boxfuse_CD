@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  boxfuse-deployment
+  labels:
+    name: webdep
+    app: boxfuse
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      name: webpod
+      app: boxfuse
+  template:
+    metadata:
+      name: webpod
+      labels:
+        name: webpod
+        app: boxfuse
+    spec:
+      containers:
+        - name:  boxfuse-images
+          image: 2222s/boxfuse:V-3
+          ports:
+            - containerPort: 8080
